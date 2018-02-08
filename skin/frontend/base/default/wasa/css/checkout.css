@@ -1,0 +1,179 @@
+@font-face {
+  font-family: 'IntroCondRegular';  
+  src: url('../fonts/intro-cond-regular.ttf');
+}
+
+@font-face {
+  font-family: 'IntroCondBold';  
+  src: url('../fonts/intro-cond-bold.ttf');
+}
+
+.wasa__financing-options {
+  overflow: hidden;
+  background-color: #f1f1f1;
+  padding: 40px 40px 60px 40px;
+}
+
+.wasa__finacing-options__header {
+  overflow: hidden;
+}
+
+.wasa__financing-options__subheader {
+  display: block;
+  margin-bottom: 20px;
+}
+
+.wasa__financing-options__heading {
+  display: inline-block;
+  font-family: IntroCondBold;
+  font-size: 18px;
+  color: #005aa0;
+  line-height: 23px;
+  margin-bottom: 4px;    
+}
+
+.wasa__financing-options__financing-box-container {  
+  margin-bottom: 25px;
+}  
+
+.wasa__financing-options__info-tooltip {
+  display: inline-block;    
+  text-align: center;  
+  width: 20px;
+  height: 20px;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 20px;
+  background-color: #c3d7e7;
+  border-radius: 50%;
+}
+
+.wasa__financing-box {
+  width: 32%;
+  float: left;
+  background-color: #fff;
+  color: #005a96;
+  text-align: center;
+  padding: 35px 0 20px 0;
+  margin-right: 1.1%;
+  cursor: pointer;  
+  font-family: IntroCondBold;
+  font-size: 18px;
+  border-bottom: 4px solid #005a96;
+}
+
+.wasa__financing-box:hover {
+  cursor: default !important;
+}
+
+.wasa__financing-box__big--float-left {
+  float: left;
+}
+
+.wasa__financing-box--selected {
+  /* transform: scale(1.2); */
+  z-index: 2000;
+  position: relative;
+  /* transform: scale(1); */
+  box-shadow: 0px 8px 20px rgba(36,37,38,0.08);
+}
+
+.wasa__financing-box__price {
+  padding: 0;
+  margin: 0;
+  font-size: 42px;
+}
+
+.wasa__financing-box__duration {
+  line-height: 42px;
+}
+
+.wasa__financing-box__big {
+  width: 150px;
+  background-color: #0059ac;
+  color: white;
+  text-align: center;
+  padding: 100px 0 100px 0;
+}
+
+#wasa__financing-box__submit-btn {
+  color: #ffffff;
+  padding: 12px 24px;
+  background-color: #005a96;
+  border: none;
+  border-radius: 3px;
+}  
+
+.wasa__component-container .form-list {
+  padding: 0px;
+}
+
+.wasa__product-widget__container {
+  max-width: 300px;  
+  color: #005a96;
+  text-align: left;  
+  padding: 10px;
+  margin-top: 20px;
+  border: 1px solid #ccd5dc;
+  transition: all 0.3s ease;
+}
+
+.wasa__product-widget__container:hover {  
+  border-color: #99b4ca;
+}
+
+.wasa__product-widget__row {
+  margin-bottom: 10px;
+}
+
+.wasa__product-widget__heading {
+  display: inline;
+  font-family: 'IntroCondBold';
+  color: #005a96;
+  text-transform: lowercase;
+}
+
+.wasa__product-widget__tooltip {
+  float: right;
+  text-align: center;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 20px;
+  width: 20px;
+  height: 20px;
+  background-color: #c5d7e5;  
+  border-radius: 50%;
+}
+
+.wasa__product-widget__logo {  
+  display: inline-block;   
+  width: 100px;  
+  padding: 10px;
+  margin-right: 14px;
+  background: url('../img/wasa-kredit.svg');
+  background-size: 85px;
+  background-repeat: no-repeat;
+}
+
+.wasa__product-widget__copy {
+  font-size: 12px;
+}
+
+@media screen and (max-width: 639px) {
+  .wasa__financing-options {
+    padding: 10px;
+  }
+
+  .wasa__financing-box {
+    font-size: 13px;
+  }
+
+  .wasa__financing-box__price {
+    font-size: 28px;
+  }
+
+  .wasa__financing-box__duration {
+    font-size: 13px;
+  }
+
+}

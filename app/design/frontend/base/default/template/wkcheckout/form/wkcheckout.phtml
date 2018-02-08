@@ -1,0 +1,44 @@
+<iframe class="form-list" id="payment_form_<?php echo $this->getMethodCode() ?>" style="display:none; padding-left: 0px; border: none; width: 100%; min-height: 300px;" srcdoc='
+  <!-- Custom stylesheet -->
+  <link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('wasa/css/checkout.css'); ?>" />
+
+
+  <div class="wasa__component-container">
+    <div>
+      <div class="wasa__financing-options">
+        <div class="wasa__financing-options__header">
+          <span class="wasa__financing-options__heading">Leasing som passar dig</span> 
+          <span class="wasa__financing-options__subheader">Du v&auml;ljer m&aring;nadskostnad i n&auml;sta steg.</span>       
+        </div>
+
+        <div class="wasa__financing-options__financing-box-container">
+        
+          <?php foreach($this->getLeasingOptions() as $index=>$option): ?>
+
+            <div class="wasa__financing-box <?php if($index == 1) echo "wasa__financing-box--selected" ?>">
+              <div>
+                <span class="wasa__financing-box__price"><?php echo (int)$option["monthly_cost"]["amount"] ?></span>
+                <span>
+                  <!-- {currency}/{paymentInterval} -->                
+                  kr/mån
+                </span>
+              </div>
+              <div>
+                <span class="wasa__financing-box__duration">
+                  <!-- {financingTime} -->                
+                  <?php echo $option["contract_length"] ?> månader
+                </span>
+              </div>
+            </div>
+
+          <?php endforeach; ?>    
+                
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <?php echo $this->getMethod()->getConfigData("message");?>
+    </div>
+  </div>
+'></iframe>

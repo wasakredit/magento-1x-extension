@@ -1,0 +1,142 @@
+<?xml version="1.0"?>
+<config>    
+  <sections>
+    <payment>
+      <groups>
+        <wkcheckout translate="label" module="wkcheckout">          
+          <label>Wasa Kredit</label>
+          <sort_order>1000</sort_order>
+          <show_in_default>1</show_in_default>
+          <show_in_website>1</show_in_website>
+          <show_in_store>1</show_in_store>
+          <comment><![CDATA[<h5>Payment checkout powered by<a href="https://www.wasakredit.se">Wasa Kredit</a>.</h5><hr/>]]></comment>
+          <fields>
+
+            <active translate="label">
+              <label>Enabled</label>
+              <frontend_type>select</frontend_type>
+              <source_model>adminhtml/system_config_source_yesno</source_model>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <sort_order>1</sort_order>
+            </active>
+
+            <title translate="label">
+              <label>Title</label>
+              <frontend_type>text</frontend_type>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <sort_order>2</sort_order>
+            </title>
+
+            <partner_id translate="label">
+              <label>Partner ID</label>     
+              <comment>Partner ID is issued by Wasa Kredit.</comment>
+              <frontend_type>text</frontend_type>
+              <backend_model>adminhtml/system_config_backend_encrypted</backend_model>
+              <validate>required-entry</validate>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <sort_order>3</sort_order>
+            </partner_id>
+
+            <client_secret_id translate="label">
+              <label>Client Secret</label>
+              <comment>Client Secret is issued by Wasa Kredit.</comment>
+              <frontend_type>text</frontend_type>
+              <validate>required-entry</validate>
+              <backend_model>adminhtml/system_config_backend_encrypted</backend_model>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <sort_order>4</sort_order>
+            </client_secret_id>
+
+            <test_mode translate="label">
+              <label>Test Mode</label>
+              <frontend_type>radios</frontend_type>              
+              <source_model>wkcheckout/system_config_source_button_values</source_model>              
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <comment>API calls will be in test mode.</comment>
+              <sort_order>5</sort_order>
+            </test_mode>            
+
+            <order_status translate="label">
+              <label>New order status</label>
+              <frontend_type>select</frontend_type>
+              <source_model>wkcheckout/system_config_source_dropdown_values</source_model>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <sort_order>6</sort_order>
+            </order_status>
+
+            <allowspecific translate="label">
+              <label>Payment Applicable From</label>
+              <frontend_type>select</frontend_type>
+              <sort_order>7</sort_order>
+              <source_model>adminhtml/system_config_source_payment_allspecificcountries</source_model>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </allowspecific>
+            
+            <specificcountry translate="label">
+              <label>Countries Payment Applicable From</label>
+              <frontend_type>multiselect</frontend_type>
+              <sort_order>8</sort_order>
+              <source_model>adminhtml/system_config_source_country</source_model>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <depends><allowspecific>1</allowspecific></depends>
+            </specificcountry>
+    
+            <advanced_options type="group" translate="label">
+              <label>Advanced Settings</label>
+              <frontend_class>config-advanced</frontend_class>
+              <frontend_type>text</frontend_type>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <sort_order>9</sort_order>            
+              <fields>
+                <org_number_field_id translate="label">
+                  <label>Custom Organisation Number Field</label>
+                  <comment>Will default to vat_id</comment>
+                  <frontend_type>text</frontend_type>              
+                  <show_in_default>1</show_in_default>
+                  <show_in_website>1</show_in_website>
+                  <show_in_store>1</show_in_store>
+                  <sort_order>1</sort_order> 
+                </org_number_field_id>
+                <request_domain translate="label">
+                  <label>Base URI</label>
+                  <frontend_type>text</frontend_type>
+                  <show_in_default>1</show_in_default>
+                  <show_in_website>1</show_in_website>
+                  <show_in_store>1</show_in_store>
+                  <sort_order>2</sort_order>
+                </request_domain>
+                <confirmation_callback_url translate="label">
+                  <label>Confirmation Callback URI</label>
+                  <frontend_type>text</frontend_type>
+                  <show_in_default>1</show_in_default>
+                  <show_in_website>1</show_in_website>
+                  <show_in_store>1</show_in_store>
+                  <sort_order>3</sort_order>
+                </confirmation_callback_url>
+              </fields>
+            </advanced_options> 
+
+          </fields>
+        </wkcheckout>
+      </groups>
+    </payment>
+  </sections>
+</config>

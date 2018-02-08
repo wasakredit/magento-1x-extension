@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <Wasa_Wkcheckout>
+      <version>1.4.0.0</version>
+    </Wasa_Wkcheckout>
+  </modules>
+ 
+  <global>
+    <fieldsets>
+      <sales_convert_quote_payment>
+        <custom_field_one>
+          <to_order_payment>*</to_order_payment>
+        </custom_field_one>
+        <custom_field_two>
+          <to_order_payment>*</to_order_payment>
+        </custom_field_two>
+      </sales_convert_quote_payment>
+    </fieldsets>
+     
+    <helpers>
+      <wkcheckout>
+        <class>Wasa_Wkcheckout_Helper</class>
+      </wkcheckout>
+    </helpers>
+ 
+    <blocks>
+      <wkcheckout>
+        <class>Wasa_Wkcheckout_Block</class>
+      </wkcheckout>
+    </blocks>
+         
+    <models>
+      <wkcheckout>
+        <class>Wasa_Wkcheckout_Model</class>
+      </wkcheckout>
+    </models>
+ 
+    <resources>
+      <wkcheckout_setup>
+        <setup>
+          <module>Wasa_Wkcheckout</module>
+        </setup>
+      </wkcheckout_setup>
+    </resources>
+  </global>
+ 
+  <default>
+    <payment>
+      <wkcheckout>
+        <active>0</active>        
+        <model>wkcheckout/checkout</model>
+        <order_status>pending_wasa_checkout</order_status>
+        <test_mode>1</test_mode>
+        <title>Wasa Kredit Leasing</title>      
+        <allowspecific>1</allowspecific>
+        <specificcountry>SE</specificcountry>
+        <payment_action>sale</payment_action>
+      </wkcheckout>
+    </payment>
+  </default>
+   
+  <frontend>
+    <routers>
+      <wkcheckout>
+        <use>standard</use>
+        <args>
+          <module>Wasa_Wkcheckout</module>
+          <frontName>wkcheckout</frontName>
+        </args>
+      </wkcheckout>
+    </routers>
+  </frontend>
+</config>
