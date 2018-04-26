@@ -15,7 +15,11 @@ use \DateTime;
 use \DateTimeZone;
 use \DateInterval;
 
-session_start();
+if(!isset($_SESSION))
+{
+  session_start();
+}
+
 
 class AccessToken
 {
@@ -37,7 +41,7 @@ class AccessToken
 
   private function has_expired()
   {
-    return $this->get_date_now_utc() >= $_SESSION["token_expiry"];
+    return !empty($_SESSION["token_expiry"]) ? $this->get_date_now_utc() >= $_SESSION["token_expiry"] : true;
   }
 
   private function get_date_now_utc()
@@ -62,7 +66,7 @@ class AccessToken
 
   public function get_token()
   {    
-    if ($_SESSION["token"] && $_SESSION["token_expiry"] && !$this->has_expired())
+    if (!empty($_SESSION["token"]) && !empty($_SESSION["token_expiry"]) && !$this->has_expired())
     {
       return $_SESSION["token"];
     }
@@ -101,13 +105,11 @@ class AccessToken
 
     $decoded_json = json_decode($response, true);
   
-    if($decoded_json['error']) return null;
+    if(!empty($decoded_json['error'])) return null;
 
-    $_SESSION["token"] = $decoded_json['access_token'];
-    $_SESSION["token_expiry"] = $this->get_expires_at($decoded_json['expires_in']);
+    $_SESSION["token"] = !empty($decoded_json['access_token']) ? $decoded_json['access_token']: "";
+    $_SESSION["token_expiry"] = !empty($decoded_json['expires_in']) ? $this->get_expires_at($decoded_json['expires_in']) : $this->get_date_now_utc();
     
     return $_SESSION["token"];
-
   }
-
 }
