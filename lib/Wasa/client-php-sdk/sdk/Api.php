@@ -26,8 +26,8 @@ class Api
   {
     $this->token_client = new AccessToken($partnerId, $clientSecret, $testMode);
     $this->_test_mode = $testMode;
-    $this->version = wasa_config('version'); //php-2.2
-    $this->plugin = null; //magento-1.5
+    $this->version = wasa_config('version');
+    $this->plugin = wasa_config('plugin');
   }
 
   public function execute($url, $method, $postData)
