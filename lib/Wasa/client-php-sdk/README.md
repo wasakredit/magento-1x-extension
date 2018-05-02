@@ -14,11 +14,11 @@
   * [Add Order Reference](#add_order_reference)
 * [Handling the Response](#handling_the_response)
 
-
 ## <a name="change_log"></a>Change log
 
 ### What's new in v2.2
 
+New generic operation names matching api changes.  
 Added tracking of SDK and Plugin version to header of API calls.  
 
 ### What's new in v2.1
@@ -43,7 +43,7 @@ This documentation is about the PHP SDK for communicating with Wasa Kredit check
 
 ### Acquiring the SDK
 
-You can apply to recieve Partner credentials by sending a mail to [ehandel@wasakredit.se](mailto:ehandel@wasakredit.se).
+You can apply to receive Partner credentials by sending a mail to [ehandel@wasakredit.se](mailto:ehandel@wasakredit.se).
 
 ### Initialization
 
@@ -492,7 +492,7 @@ When an order status change notification is received. This method may be called 
 #### Example usage:
 
 ```
-$orderId = 'f404e318-7180-47ab-91db-fbb66addf577'
+$orderId = 'f404e318-7180-47ab-91db-fbb66addf577';
 $response = $this->_client->get_order_status($orderId);
 ```
 
