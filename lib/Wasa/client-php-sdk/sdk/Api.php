@@ -42,9 +42,9 @@ class Api
       $headers[] = "x-test-mode: true";
     }
 
-    $headers[] = "x-sdk-version: ".$version;
-    $headers[] = "x-plugin-version: ".$plugin;
-
+    $headers[] = "x-sdk-version: " . $this->version;
+    $headers[] = "x-plugin-version: " . $this->plugin;
+    
     if($postData != null) {
       $postData = json_encode($postData);
     }

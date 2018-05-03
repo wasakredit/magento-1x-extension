@@ -1,4 +1,4 @@
-# Wasa Kredit Magento Extension v1.4
+# Wasa Kredit Magento Extension v1.5
 Official Wasa Kredit payment extension for Magento. Allows store builders to offer **Wasa Kredit** as a payment option.
 
 
@@ -14,17 +14,29 @@ Official Wasa Kredit payment extension for Magento. Allows store builders to off
 * [Folder structure](#folder_structure)
 
 ## <a name="change_log"></a>Change log
+
+### v1.5
+
+1. Update the internal php SDK to version 2.2.
+2. Update the use of internal SDK endpoints from deprecated endpoints `calculate_leasing_cost` and `validate_allowed_leasing_amount` to new generic ones called `calculate_monthly_cost` and `validate_financed_amount`.  
+_(This means no breaking changes to current implementation, the helper method is still called `calculateLeasingCost`)_
+3. Update the SDK config to use the correct plugin header tag.
+4. There should no longer be a problem with measuring and setting the height of the iframe if content is not loaded immediately.
+5. The plugin will now handle order status updates from Wasa Kredit properly.
+6. Discounted/Special prices should now be taking into account when rendering the monthly costs in product list views.
+
 ### v1.4         
+
 1. Add new price calculation taking difference in currency into account.
 2. Enable plugin on website and store level and add selection for supported shipping countries.
-3. Add currency validation. 
+3. Add currency validation.
 4. Modify functions that render product widget and leasing costs in list view to check if currency is SEK.
 
 
 ## <a name="requirements">Magento Version Requirements</a>
 
 Type       | Version            | Status              
----------- | ------------------ |  ------------------ 
+---------- | ------------------ |  ------------------
 Enterprise | 1.14.2.3           | Tested              
 Community  | 1.9.3.0            | Tested              
 Community  | 1.9.1.1            | Tested              
@@ -33,7 +45,7 @@ Community  | 1.8.1.0            | Tested
 
 ## <a name="installation">Installation</a>
 
-1. Extract the zip file to your server or local machine. 
+1. Extract the zip file to your server or local machine.
 2. Copy all files into the corresponding file location. ***Be careful not to replace the containing directory!***
 3. Flush the Magento Cache in `System > Cache Management`.
 
@@ -181,6 +193,3 @@ will result in the following response:
 │                   └── img
 │                       └── wasa-kredit.svg
 ```
-
-
-
