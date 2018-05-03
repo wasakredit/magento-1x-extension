@@ -1,44 +1,64 @@
-<iframe class="form-list" id="payment_form_<?php echo $this->getMethodCode() ?>" style="display:none; padding-left: 0px; border: none; width: 100%; min-height: 300px;" srcdoc='
+<iframe class="form-list" id="payment_form_<?php echo $this->getMethodCode() ?>" style="display: block; float: left; opacity: 0; margin-bottom: -500px; padding-left: 0px; border: none; width: 100%; min-height: 200px;" srcdoc='
+  <html>
+  <head>
   <!-- Custom stylesheet -->
   <link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('wasa/css/checkout.css'); ?>" />
-
-
+  </head>
+  <body style="margin: 0;">
   <div class="wasa__component-container">
     <div>
       <div class="wasa__financing-options">
         <div class="wasa__financing-options__header">
-          <span class="wasa__financing-options__heading">Leasing som passar dig</span> 
-          <span class="wasa__financing-options__subheader">Du v&auml;ljer m&aring;nadskostnad i n&auml;sta steg.</span>       
+          <span class="wasa__financing-options__heading">Leasing som passar dig</span>
+          <span class="wasa__financing-options__subheader">Du v&auml;ljer m&aring;nadskostnad i n&auml;sta steg.</span>
         </div>
-
         <div class="wasa__financing-options__financing-box-container">
-        
           <?php foreach($this->getLeasingOptions() as $index=>$option): ?>
-
-            <div class="wasa__financing-box <?php if($index == 1) echo "wasa__financing-box--selected" ?>">
+            <div class="wasa__financing-box">
               <div>
                 <span class="wasa__financing-box__price"><?php echo (int)$option["monthly_cost"]["amount"] ?></span>
-                <span>
-                  <!-- {currency}/{paymentInterval} -->                
-                  kr/mån
-                </span>
+                <span class="wasa__financing-box__price-and-duration">kr/mån</span>
               </div>
               <div>
                 <span class="wasa__financing-box__duration">
-                  <!-- {financingTime} -->                
                   <?php echo $option["contract_length"] ?> månader
                 </span>
               </div>
             </div>
-
-          <?php endforeach; ?>    
-                
+          <?php endforeach; ?>
         </div>
       </div>
     </div>
-
     <div>
       <?php echo $this->getMethod()->getConfigData("message");?>
     </div>
   </div>
+</body>
 '></iframe>
+<script>
+  var wasaIframe = document.getElementById("payment_form_<?php echo $this->getMethodCode() ?>");
+
+  function actualResizeHandler() {
+    wasaIframe.style.height = wasaIframe.contentWindow.document.body.scrollHeight + 'px';
+  }
+
+  window.addEventListener("resize", resizeThrottler, false);
+
+  var resizeTimeout;
+  function resizeThrottler() {
+    if ( !resizeTimeout ) {
+      resizeTimeout = setTimeout(function() {
+        resizeTimeout = null;
+        actualResizeHandler();
+       }, 66);
+    }
+  }
+
+  document.getElementById("payment_form_<?php echo $this->getMethodCode() ?>").onload = function(){
+    this.style.height = this.contentWindow.document.body.scrollHeight + 'px';
+    this.style.display = "none";
+    this.style.opacity = 1;
+    this.style.marginBottom = 0;
+    this.style.float = "none";
+  }
+</script>

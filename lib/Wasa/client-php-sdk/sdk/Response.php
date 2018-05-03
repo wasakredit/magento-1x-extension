@@ -38,7 +38,5 @@ class Response {
     }
 
     return $this;
-  }  
-
-
+  } 
 }

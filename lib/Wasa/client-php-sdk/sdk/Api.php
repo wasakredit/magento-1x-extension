@@ -19,16 +19,19 @@ class Api
 
   private $token_client;
   private $_test_mode;
+  private $version;
+  private $plugin;
 
   public function __construct($partnerId, $clientSecret, $testMode)
   {
     $this->token_client = new AccessToken($partnerId, $clientSecret, $testMode);
     $this->_test_mode = $testMode;
+    $this->version = wasa_config('version');
+    $this->plugin = wasa_config('plugin');
   }
 
   public function execute($url, $method, $postData)
   {
-    
     if(!$this->token_client->get_token()) return null;
 
     $headers = array();
@@ -38,6 +41,9 @@ class Api
     if($this->_test_mode) {
       $headers[] = "x-test-mode: true";
     }
+
+    $headers[] = "x-sdk-version: ".$version;
+    $headers[] = "x-plugin-version: ".$plugin;
 
     if($postData != null) {
       $postData = json_encode($postData);
@@ -103,5 +109,4 @@ class Api
     $return_value = $validation ? $parsed_value : $value;
     return $return_value;
   }
-
 }
