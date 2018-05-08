@@ -152,8 +152,7 @@ class Wasa_Wkcheckout_CheckoutController extends Mage_Core_Controller_Front_Acti
         $order->setData('state', Mage_Sales_Model_Order::STATE_COMPLETE);
         break;
       case 'pending':
-        $order->addStatusToHistory("pending_wasa_checkout", "Awaiting information or more signatories. An order could stay in this state for multiple days.");
-        $order->setData('state', "pending_wasa_checkout");
+        $order->addStatusToHistory($order->getStatus(), "Awaiting information or more signatories. An order could stay in this state for multiple days.");
         break;
       case 'ready_to_ship':
         $order->addStatusToHistory(Mage_Sales_Model_Order::STATE_COMPLETE, "Wasa Kredit has approved to finance this order.");
