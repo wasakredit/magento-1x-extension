@@ -46,7 +46,9 @@ $baseUrl = Mage::getStoreConfig('payment/advanced_options/request_domain');
 
     var options = {
       onComplete: function(orderReferences){         
-        var wasaOrderId = orderReferences[orderReferences.length - 1]['value'];           
+        //var wasaOrderId = orderReferences[orderReferences.length - 1]['value'];
+        var wasaOrderId = orderReferences.filter(function(a){return a.key==="wasakredit-order-id"})[0].value;
+      
         httpGet(baseUrl + '/wkcheckout/checkout/callbackCompleted'
                  + translateObjectContents('order_id', encodeOrderId()) + '&' + 'wasa_order_id=' + wasaOrderId,
                  function(state, status, http) { if(state == 4 && status == 200) { return http.responseText; }
